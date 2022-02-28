@@ -71,7 +71,26 @@ const animals = [{
 ];
 
 const animalFilter = (list = animals, pop, zoo) => {
-    return [];
+    const sortedList = list.sort((a, b) => {
+        if (a.common_name < b.common_name) {
+            return -1;
+        }
+        if (a.common_name > b.common_name) {
+            return 1;
+        }
+        return 0;
+    });
+    const popList = sortedList.map((e) => {
+        if (e.pop > this.pop) {
+            popList.push(e);
+        }
+    });
+    const zooList = popList.map((e) => {
+        if (e.zoo <= this.zoo) {
+            zooList.push(e);
+        }
+    });
+    return zooList;
 };
 
 if (typeof module !== 'undefined') {
@@ -80,3 +99,5 @@ if (typeof module !== 'undefined') {
         animalFilter,
     };
 }
+
+animalFilter(animals, 300, 7);
