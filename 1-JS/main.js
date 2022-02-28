@@ -99,5 +99,3 @@ if (typeof module !== 'undefined') {
         animalFilter,
     };
 }
-
-animalFilter(animals, 300, 7);
